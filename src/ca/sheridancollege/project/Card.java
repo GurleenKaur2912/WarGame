@@ -10,16 +10,59 @@ package ca.sheridancollege.project;
  * game. Students wishing to add to the code should remember to add themselves as a modifier.
  *
  * @author dancye
+ * @author Gurleen Kaur Student ID:991717085 Date 5 April 2024
+ *
+ * The Card class represents a playing card with a specific rank and suit. It encapsulates the rank and suit of the card
+ * and provides methods to retrieve them. This class follows principles of encapsulation, single responsibility, and
+ * open/closed principle.
+ *
+ * Encapsulation: Private data members (rank and suit) are encapsulated, and access is provided through public getter
+ * methods. Single Responsibility: The primary responsibility of this class is to represent a playing card. Open/Closed
+ * Principle: While it's not directly applicable in this class, it can be extended to accommodate new functionalities
+ * without modifying existing code.
  */
-public abstract class Card {
-    //default modifier for child classes
+public class Card {
+
+    private Rank rank;
+    private Suit suit;
 
     /**
-     * Students should implement this method for their specific children classes
+     * Constructs a Card object with the specified rank and suit.
      *
-     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
+     * @param rank the rank of the card
+     * @param suit the suit of the card
+     */
+    public Card(Rank rank, Suit suit) {
+        this.rank = rank;
+        this.suit = suit;
+    }
+
+    /**
+     * Retrieves the rank of the card.
+     *
+     * @return the rank of the card
+     */
+    public Rank getRank() {
+        return rank;
+    }
+
+    /**
+     * Retrieves the suit of the card.
+     *
+     * @return the suit of the card
+     */
+    public Suit getSuit() {
+        return suit;
+    }
+
+    /**
+     * Returns a string representation of the card, including its rank and suit.
+     *
+     * @return a string representation of the card
      */
     @Override
-    public abstract String toString();
+    public String toString() {
+        return rank + " of " + suit;
+    }
 
 }

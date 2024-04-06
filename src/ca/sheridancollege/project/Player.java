@@ -10,40 +10,85 @@ package ca.sheridancollege.project;
  *
  * @author dancye
  * @author Paul Bonenfant Jan 2020
+ * @author Gurleen Kaur Student ID:991717085 Date 5 April 2024
+ *
+ * The Player class represents a player in the game, managing the player's name, hand of cards, scoring, and hand
+ * resetting. It provides methods for accessing player information, adding cards to the player's hand, calculating
+ * scores, and resetting the hand.
+ *
+ * @author hp
  */
-public abstract class Player {
+import java.util.ArrayList;
+import java.util.List;
 
-    private String name; //the unique name for this player
+public class Player {
+
+    private String name;
+    private List<Card> hand;
 
     /**
-     * A constructor that allows you to set the player's unique ID
+     * Constructs a Player object with a specified name and an empty hand.
      *
-     * @param name the unique ID to assign to this player.
+     * @param name the name of the player
      */
     public Player(String name) {
         this.name = name;
+        this.hand = new ArrayList<>();
     }
 
     /**
-     * @return the player name
+     * Retrieves the name of the player.
+     *
+     * @return the name of the player
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Ensure that the playerID is unique
+     * Retrieves the player's hand of cards.
      *
-     * @param name the player name to set
+     * @return the list of cards in the player's hand
      */
-    public void setName(String name) {
-        this.name = name;
+    public List<Card> getHand() {
+        return hand;
     }
 
     /**
-     * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
-     * with logic to play your game.
+     * Adds a list of cards to the player's hand.
+     *
+     * @param cards the list of cards to add to the player's hand
      */
-    public abstract void play();
+    public void addCards(List<Card> cards) {
+        hand.addAll(cards);
+    }
 
+    /**
+     * Adds a card to the player's hand.
+     *
+     * @param card the card to add to the player's hand
+     */
+    public void addCard(Card card) {
+        hand.add(card);
+    }
+
+    /**
+     * Calculates the player's score based on the values of the cards in the hand.
+     *
+     * @return the total score of the player
+     */
+    public int getScore() {
+        int score = 0;
+        for (Card card : hand) {
+            score += card.getRank().getValue();
+        }
+        return score;
+    }
+
+    /**
+     * Resets the player's hand by clearing all cards.
+     */
+    public void resetHand() {
+        hand.clear();
+    }
 }
